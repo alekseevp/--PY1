@@ -27,7 +27,7 @@ def get_percentage(dict_):
     summa = sum(dict_.values())
     for k, v in dict_.items():
         pct = round(v * 100.0 / summa)
-        pct_dict.update({k: pct})
+        pct_dict[k] = pct
     return pct_dict
 
 print(get_percentage(dict))
