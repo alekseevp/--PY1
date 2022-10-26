@@ -5,7 +5,11 @@ def get_count_char(str_):
     str_lower = str_.lower()
     for symbol in str_lower:
         if symbol.isalpha():
-            dict.update({symbol: str_lower.count(symbol)})
+            if symbol not in dict: #без двухуровнего условия оно отказывается работать
+                dict[symbol] = 0
+            dict[symbol] += 1
+
+
     return dict
 
 
@@ -20,11 +24,10 @@ print(get_count_char(main_str))
 
 def get_percentage(dict_):
     pct_dict = {}
-    s = sum(dict_.values())
+    summa = sum(dict_.values())
     for k, v in dict_.items():
-        pct = str(round(v * 100.0 / s)) + '%'
+        pct = round(v * 100.0 / summa)
         pct_dict.update({k: pct})
     return pct_dict
-
 
 print(get_percentage(dict))
